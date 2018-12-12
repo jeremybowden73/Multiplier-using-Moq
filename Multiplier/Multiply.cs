@@ -12,13 +12,20 @@ namespace Multiplier
 
     public class Multiply : IMultiply
     {
-        // dependency injection of the external class
+        // create a "placeholder" for the the external class that
+        // is needed when a new Multiply object is created
         private readonly IMultiplierUtils _multiplierUtils;
 
+        // constructor injection. When a new Multiply object is created,
+        // populate the "placeholder" _multiplierUtils with the IMultiplierUtils
+        // object that was passed in during creation
         public Multiply(IMultiplierUtils multUtils)
         {
             _multiplierUtils = multUtils;
         }
+        
+        // you can now use _multiplierUtils (the object that
+        // was passed in to the constructor) in the class methods:
         
         // define method to calculate the product
         public int MultiplyTwoInts()

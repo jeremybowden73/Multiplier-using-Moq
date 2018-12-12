@@ -8,7 +8,7 @@ namespace MultiplierTests
     public class MultiplierUnitTest
     {
         [TestMethod]
-        public void Multiply_5_6_Returns_30_using_Mock()
+        public void MultiplyTwoInts_5_6_Returns_30_using_Mock()
         {
             // Arrange
             // create a Mock object of the INTERFACE
@@ -35,7 +35,6 @@ namespace MultiplierTests
 
             // Assert
             Assert.AreEqual(expectedResponse, response);
-
         }
     }
 }
