@@ -8,7 +8,7 @@ namespace MultiplierTests
     public class MultiplierUnitTest
     {
         [TestMethod]
-        public void MultiplyTwoInts_5_6_Returns_30_using_Mock()
+        public void MultiplyTwoInts_5_7_Returns_35_using_Mock()
         {
             // Arrange
             // create a Mock object of the INTERFACE

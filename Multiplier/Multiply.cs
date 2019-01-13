@@ -12,7 +12,7 @@ namespace Multiplier
 
     public class Multiply : IMultiply
     {
-        // create a "placeholder" for the the external class that
+        // create a "placeholder name" for the the external class that
         // is needed when a new Multiply object is created
         private readonly IMultiplierUtils _multiplierUtils;
 
