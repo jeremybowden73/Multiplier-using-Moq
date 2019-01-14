@@ -7,6 +7,7 @@ namespace Multiplier
 {
     public interface IMultiply
     {
+        void PopulateMultUtils();
         int MultiplyTwoInts();
     }
 
@@ -23,11 +24,19 @@ namespace Multiplier
         {
             _multiplierUtils = multUtils;
         }
-        
-        // you can now use _multiplierUtils (the object that
-        // was passed in to the constructor) in the class methods:
-        
-        // define method to calculate the product
+
+        // you can now use _multiplierUtils (the object that was passed in to the constructor) in the class methods:
+
+        // method to populate the _multiplierUtils object by requesting ints from the user.
+        // NOTE.. although it could be, this is not part of the MultiplyTwoInts method because then
+        // we could not mock the GetUserInt and GetUserMultipler properties in the unit test.
+        public void PopulateMultUtils()
+        {
+            _multiplierUtils.GetUserInt();
+            _multiplierUtils.GetUserMultiplier();
+        }
+
+        // method to do the maths and return the result
         public int MultiplyTwoInts()
         {
             int ans = _multiplierUtils.MyInteger * _multiplierUtils.MyMultiplier;

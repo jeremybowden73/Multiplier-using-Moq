@@ -20,8 +20,8 @@ namespace MultiplierTests
             mockMultiplierUtils.Setup(m => m.MyMultiplier).Returns(7);
 
             // create an object of the type that contains the method-under-test,
-            // by using the Mock object to instantiate it
-            var testResultObj = new Multiply(mockMultiplierUtils.Object);
+            // by injecting the Mock object for instantiation
+            var testMultiply = new Multiply(mockMultiplierUtils.Object);
 
             // define the expected test result
             var expectedResponse = 35;
@@ -30,7 +30,7 @@ namespace MultiplierTests
             // Act
             // calculate the response from the method-under-test
             // (the Mock object's values are used)
-            var response = testResultObj.MultiplyTwoInts();
+            var response = testMultiply.MultiplyTwoInts();
             
 
             // Assert

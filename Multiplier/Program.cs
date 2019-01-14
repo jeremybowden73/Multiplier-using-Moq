@@ -1,26 +1,30 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Multiplier
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            // configure the dependency injection container to provide objects
+            // when interfaces are requested
+            var serviceProvider = new ServiceCollection()
+                   .AddTransient<IMultiply, Multiply>()
+                   .AddTransient<IMultiplierUtils, MultiplierUtils>()
+                   .BuildServiceProvider();
+
             Console.Clear();
 
-            // create a new userNum object
-            var userNum = new MultiplierUtils();
-
-            // invoke the method on the object to get a number from the user
-            userNum.GetUserInt();
-
-            // invoke the method to get a "multiplier" number
-            userNum.GetUserMultiplier();
-
-            // create a "Result Object" of type Multiply, passing to it the
-            // userNum object that we've populated.
+            // create a "Result Object" of type Multiply, by requesting an "empty"
+            // Multiply object from the serviceProvider, then
             // invoke the multiplying method and store the result as Result
-            var ResultObj = new Multiply(userNum);
+            var ResultObj = serviceProvider.GetService<IMultiply>();
+
+            // invoke the Multiply method that asks the user for two ints
+            ResultObj.PopulateMultUtils();
+
+            // invoke the Multiply method that does the maths
             var Result = ResultObj.MultiplyTwoInts();
             Console.WriteLine($"Answer is... {Result}");
         }
